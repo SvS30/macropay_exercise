@@ -35,6 +35,8 @@ Deberas ejecutar en una bash
 python main.py
 ```
 
+Una vez que el servidor este levantado, usted puede usar el endpoint `/docs` para testear con Swagger.
+
 ### 🧰 Dependencias || plugins
 | Name | Version |
 | ---- | ---- |
@@ -42,3 +44,4 @@ python main.py
 | pydantic | 1.9.2 |
 | python-dotenv | 0.20.0 |
 | uvicorn | 0.18.2 |
+| pymongo | 4.2.0 |
