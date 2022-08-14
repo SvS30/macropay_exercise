@@ -8,12 +8,34 @@ Luego de clonar el proyecto, necesitara:
     ```
     pip install -r requirements.txt
     ```
+- Cree una base de datos en su servicio de MongoDB.
+- Importe el archivo `data/data.json` en una colección llamada **contacts**.
+- Duplique el archivo `.env.example` y renombre la copia a `.env`
+    - Ingrese los datos y credenciales solicitadas.
+        ```
+        # Entorno en el que correra el proyecto
+        APP_ENV=local
+        # Host o IP en el que desea levantar el servidor
+        APP_HOST=localhost
+        # Puerto en el que desea levantar el servidor
+        APP_PORT=8000
+
+        # URI de su conexión a MongoDB
+        DB_HOST=mongodb://user:pass@host/
+        # Puerto en el que esta corriendo su instancia de MongoDB
+        DB_PORT=27017
+        # Nombre de la base de datos
+        DB_NAME=
+        ```
+
 
 ### 🌐 Ejecutar
 Deberas ejecutar en una bash
 ```
 python main.py
 ```
+
+Una vez que el servidor este levantado, usted puede usar el endpoint `/docs` para testear con Swagger.
 
 ### 🧰 Dependencias || plugins
 | Name | Version |
@@ -22,3 +44,4 @@ python main.py
 | pydantic | 1.9.2 |
 | python-dotenv | 0.20.0 |
 | uvicorn | 0.18.2 |
+| pymongo | 4.2.0 |
