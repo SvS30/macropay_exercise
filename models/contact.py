@@ -1,8 +1,8 @@
-from uuid import UUID, uuid1
+from uuid import uuid1
 from pydantic import BaseModel
 from typing import Optional, List
 
-class People(BaseModel):
+class Contact(BaseModel):
     id: Optional[str] = uuid1()
     name: str
     phone: str
