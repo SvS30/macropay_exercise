@@ -1,4 +1,5 @@
 import json
+from typing import Union
 from uuid import uuid1
 from fastapi import APIRouter, HTTPException
 from models.contact import Contact
@@ -30,8 +31,14 @@ def add_data_file(peoples):
         return True
 
 @routes.get('/contacts', status_code=200)
-async def index():
-    return fetch_data_file()
+async def index(phrase: Union[str, None] = None):
+    contacts = fetch_data_file()
+    contacts = sorted(contacts, key=lambda contact: contact['name'], reverse=False)
+    if phrase:
+        contacts = list(filter(lambda contact: contact['name'].lower().__contains__(phrase.lower()), contacts))
+    elif phrase == '':
+        raise HTTPException(status_code=400, detail='Phrase is empty')
+    return contacts
 
 @routes.post('/contacts', status_code=201)
 async def store(contact: Contact):
