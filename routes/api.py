@@ -4,7 +4,7 @@ from uuid import uuid1
 from fastapi import APIRouter, HTTPException
 from models.contact import Contact
 
-routes = APIRouter(tags=["API Contacts"], prefix="/api/v1")
+routes = APIRouter(tags=["API Contacts"])
 
 def fetch_data_file():
     try:
