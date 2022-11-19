@@ -4,9 +4,18 @@ from routes import api
 from os import getenv
 from dotenv import load_dotenv
 
-app = FastAPI()
+app = FastAPI(
+    title="Address Book Rest API",
+    description="Macropay exercise on FastAPI",
+    version="1.0.0"
+)
+
 load_dotenv(dotenv_path='./.env')
 app.include_router(api.routes)
+
+@app.get('/')
+def home():
+    return { 'message': 'Hello World' }
 
 if __name__ == "__main__":
     uvicorn.run(
