@@ -1,6 +1,6 @@
 from typing import List, Union
 from fastapi import APIRouter, HTTPException
-from models.contact import Contact
+from schemas.contact import Contact
 from config.database import create_connection
 
 routes = APIRouter(prefix="/api/v1", tags=["API Contacts"])
