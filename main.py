@@ -1,6 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
-from routes import api
+from routes.api import contact
 from os import getenv
 from dotenv import load_dotenv
 
@@ -11,7 +11,7 @@ app = FastAPI(
 )
 
 load_dotenv(dotenv_path='./.env')
-app.include_router(api.routes)
+app.include_router(contact.routes)
 
 @app.get('/')
 def home():
