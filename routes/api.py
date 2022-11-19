@@ -3,7 +3,7 @@ from fastapi import APIRouter, HTTPException
 from models.contact import Contact
 from config.database import create_connection
 
-routes = APIRouter(tags=["API Contacts"])
+routes = APIRouter(prefix="/api/v1", tags=["API Contacts"])
 
 def get_contact_by_id(contact_id):
     contact = create_connection()["contacts"].find_one({'id': contact_id}, {'_id': 0})
