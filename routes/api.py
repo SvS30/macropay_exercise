@@ -40,6 +40,7 @@ async def show(contact_id: str):
 @routes.patch('/contacts/{contact_id}', status_code=200)
 async def update(contact_id: str, contact_to_update: Contact):
     contact_to_update.id = contact_id
+    get_contact_by_id(contact_id)
     contact_updated = create_connection()["contacts"].find_one_and_update({"id": contact_id},
         { "$set":dict(contact_to_update)}, {'_id': 0})
     if contact_to_update:
@@ -50,6 +51,7 @@ async def update(contact_id: str, contact_to_update: Contact):
 
 @routes.delete('/contacts/{contact_id}', status_code=204)
 async def destroy(contact_id: str):
+    get_contact_by_id(contact_id)
     create_connection()["contacts"].find_one_and_delete({'id': contact_id}, {'_id': 0})
     contact_exists = create_connection()["contacts"].find_one({'id': contact_id})
     if contact_exists == None:
